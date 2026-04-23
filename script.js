@@ -1,3 +1,4 @@
+// paper slides out
 window.addEventListener("load", () => {
   const paper = document.getElementById("paper");
 
@@ -6,6 +7,7 @@ window.addEventListener("load", () => {
   }, 300);
 });
 
+// scroll flip
 window.addEventListener("scroll", () => {
   const env = document.getElementById("env");
 
