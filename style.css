@@ -1,127 +1,105 @@
-/* ===== BASE ===== */
+/* ===== BACKGROUND ===== */
 body {
   margin: 0;
-  background: #f5f3ec;
-  font-family: "Georgia", serif;
+  background: #f4f2ea;
+  font-family: serif;
 }
 
-/* ===== GRAIN ===== */
-.noise {
+/* grain layer */
+.bg {
   position: fixed;
   inset: 0;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.18;
+
+  background:
+    url("https://grainy-gradients.vercel.app/noise.svg");
+
+  opacity: 0.25;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
 
 /* ===== CENTER ===== */
-.container {
-  height: 200vh; /* allow scroll */
+.scene {
+  height: 200vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* ===== SCENE ===== */
-.scene {
   perspective: 1200px;
 }
 
 /* ===== ENVELOPE ===== */
 .envelope {
   position: relative;
-  width: 540px;
-  height: 360px;
+  width: 520px;
+  height: 340px;
 
   transform-style: preserve-3d;
   transition: transform 1s ease;
 }
 
-/* FLIP ANIMATION */
+/* flip animation */
 .envelope.flip {
   transform: rotateY(180deg);
 }
 
-/* ===== BODY ===== */
+/* ===== ENVELOPE BODY ===== */
 .env-body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #eee7d6;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  z-index: 1;
+  background: #efe8d8;
+  z-index: 2;
 }
 
-/* ===== FLAPS ===== */
-
-/* top */
-.flap.top {
+/* ===== FLAP ===== */
+.flap {
   position: absolute;
   top: 0;
   left: 0;
 
-  border-left: 270px solid transparent;
-  border-right: 270px solid transparent;
-  border-bottom: 180px solid #eee7d6;
+  border-left: 260px solid transparent;
+  border-right: 260px solid transparent;
+  border-bottom: 160px solid #efe8d8;
 
-  z-index: 3;
+  z-index: 4;
 }
 
-/* left */
-.flap.left {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  border-top: 180px solid transparent;
-  border-bottom: 180px solid transparent;
-  border-right: 270px solid #e3dbc9;
-
-  z-index: 2;
-}
-
-/* right */
-.flap.right {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
-  border-top: 180px solid transparent;
-  border-bottom: 180px solid transparent;
-  border-left: 270px solid #e3dbc9;
-
-  z-index: 2;
-}
-
-/* ===== PAPER ===== */
+/* ===== PAPER (NOW INSIDE) ===== */
 .paper {
   position: absolute;
-  top: -80px;
+  bottom: 40px; /* inside envelope */
   left: 50%;
-  transform: translateX(-50%) rotate(-0.8deg);
+  transform: translateX(-50%) translateY(80px);
 
   width: 420px;
   padding: 50px 40px;
 
-  background: linear-gradient(#faf8f2, #f4f1e9);
+  background:
+    linear-gradient(#fbfaf5, #f3efe6),
+    url("https://grainy-gradients.vercel.app/noise.svg");
+
+  background-blend-mode: multiply;
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,0.10),
-    0 0 60px rgba(0,0,0,0.05);
+    0 20px 60px rgba(0,0,0,0.1);
 
-  z-index: 4;
+  z-index: 3;
+
+  transition: transform 1.2s ease;
+}
+
+/* PAPER PULL OUT */
+.paper.show {
+  transform: translateX(-50%) translateY(-60px);
 }
 
 /* ===== TYPOGRAPHY ===== */
 .title {
   text-align: center;
   font-size: 44px;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-/* ===== CATEGORY ===== */
 .categories {
   list-style: none;
   padding: 0;
@@ -129,22 +107,16 @@ body {
 }
 
 .categories li {
-  margin: 10px 0;
-  font-size: 15px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.categories li:hover {
-  opacity: 0.5;
+  margin: 8px 0;
 }
 
 /* ===== BACK SIDE ===== */
-.back-info {
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #eee7d6;
+
+  background: #efe8d8;
 
   display: flex;
   flex-direction: column;
@@ -153,6 +125,4 @@ body {
 
   transform: rotateY(180deg);
   backface-visibility: hidden;
-
-  z-index: 5;
 }
