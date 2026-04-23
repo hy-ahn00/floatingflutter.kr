@@ -1,54 +1,51 @@
-/* ===== BACKGROUND ===== */
+/* ===== RESET ===== */
 body {
   margin: 0;
-  background: #f4f2ea;
+  background: #f3f1ea;
   font-family: serif;
 }
 
-/* grain layer */
+/* ===== GRAIN BACKGROUND ===== */
 .bg {
   position: fixed;
   inset: 0;
-
-  background:
-    url("https://grainy-gradients.vercel.app/noise.svg");
-
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
   opacity: 0.25;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
 
-/* ===== CENTER ===== */
-.scene {
+/* ===== CENTER FIX ===== */
+.wrapper {
   height: 200vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1200px;
 }
 
 /* ===== ENVELOPE ===== */
 .envelope {
   position: relative;
-  width: 520px;
-  height: 340px;
+  width: 500px;
+  height: 320px;
 
   transform-style: preserve-3d;
   transition: transform 1s ease;
 }
 
-/* flip animation */
+/* flip */
 .envelope.flip {
   transform: rotateY(180deg);
 }
 
-/* ===== ENVELOPE BODY ===== */
+/* ===== BODY ===== */
 .env-body {
   position: absolute;
   width: 100%;
   height: 100%;
   background: #efe8d8;
   z-index: 2;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
 }
 
 /* ===== FLAP ===== */
@@ -57,22 +54,23 @@ body {
   top: 0;
   left: 0;
 
-  border-left: 260px solid transparent;
-  border-right: 260px solid transparent;
-  border-bottom: 160px solid #efe8d8;
+  border-left: 250px solid transparent;
+  border-right: 250px solid transparent;
+  border-bottom: 150px solid #efe8d8;
 
   z-index: 4;
 }
 
-/* ===== PAPER (NOW INSIDE) ===== */
+/* ===== PAPER (FIXED PROPERLY) ===== */
 .paper {
   position: absolute;
-  bottom: 40px; /* inside envelope */
   left: 50%;
-  transform: translateX(-50%) translateY(80px);
+  bottom: 0;
+
+  transform: translateX(-50%) translateY(120px);
 
   width: 420px;
-  padding: 50px 40px;
+  padding: 50px;
 
   background:
     linear-gradient(#fbfaf5, #f3efe6),
@@ -81,32 +79,32 @@ body {
   background-blend-mode: multiply;
 
   box-shadow:
-    0 20px 60px rgba(0,0,0,0.1);
+    0 20px 60px rgba(0,0,0,0.12);
 
   z-index: 3;
 
   transition: transform 1.2s ease;
 }
 
-/* PAPER PULL OUT */
+/* PAPER COMES OUT */
 .paper.show {
-  transform: translateX(-50%) translateY(-60px);
+  transform: translateX(-50%) translateY(-80px);
 }
 
-/* ===== TYPOGRAPHY ===== */
-.title {
+/* ===== TEXT ===== */
+.paper h1 {
   text-align: center;
-  font-size: 44px;
+  font-size: 42px;
   margin-bottom: 25px;
 }
 
-.categories {
+.paper ul {
   list-style: none;
   padding: 0;
   text-align: center;
 }
 
-.categories li {
+.paper li {
   margin: 8px 0;
 }
 
@@ -115,7 +113,6 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-
   background: #efe8d8;
 
   display: flex;
