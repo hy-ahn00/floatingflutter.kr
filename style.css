@@ -5,7 +5,7 @@ body {
   font-family: serif;
 }
 
-/* ===== GRAIN TEXTURE ===== */
+/* ===== GRAIN ===== */
 .noise {
   position: fixed;
   inset: 0;
@@ -14,7 +14,7 @@ body {
   pointer-events: none;
 }
 
-/* ===== CENTERING ===== */
+/* ===== CENTER ===== */
 .container {
   height: 100vh;
   display: flex;
@@ -22,24 +22,67 @@ body {
   align-items: center;
 }
 
-/* ===== ENVELOPE ===== */
+/* ===== ENVELOPE BASE ===== */
 .envelope {
   position: relative;
-  width: 500px;
-  height: 320px;
-  background: #efe8d8;
+  width: 520px;
+  height: 340px;
 }
 
-/* flap */
-.envelope::before {
-  content: "";
+/* body */
+.env-body {
   position: absolute;
-  top: -160px;
-  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #efe8d8;
+  z-index: 1;
+}
 
-  border-left: 250px solid transparent;
-  border-right: 250px solid transparent;
-  border-bottom: 160px solid #efe8d8;
+/* ===== FLAPS (balanced geometry) ===== */
+
+/* top flap */
+.flap.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+
+  border-left: 260px solid transparent;
+  border-right: 260px solid transparent;
+  border-bottom: 170px solid #efe8d8;
+
+  z-index: 3;
+}
+
+/* left flap */
+.flap.left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+
+  border-top: 170px solid transparent;
+  border-bottom: 170px solid transparent;
+  border-right: 260px solid #e4dccb;
+
+  z-index: 2;
+}
+
+/* right flap */
+.flap.right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+
+  border-top: 170px solid transparent;
+  border-bottom: 170px solid transparent;
+  border-left: 260px solid #e4dccb;
+
+  z-index: 2;
 }
 
 /* ===== PAPER ===== */
@@ -49,27 +92,23 @@ body {
   left: 50%;
   transform: translateX(-50%) rotate(-1deg);
 
-  width: 420px;
+  width: 400px;
   padding: 40px;
 
   background: #f8f6f1;
 
   box-shadow:
-    0 10px 30px rgba(0,0,0,0.08),
+    0 15px 40px rgba(0,0,0,0.08),
     0 0 60px rgba(0,0,0,0.05);
+
+  z-index: 4;
 }
 
 /* ===== TEXT ===== */
-.small {
-  text-align: center;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
 .title {
   text-align: center;
-  font-size: 42px;
-  margin: 20px 0;
+  font-size: 40px;
+  margin-bottom: 25px;
 }
 
 /* ===== CATEGORY LIST ===== */
