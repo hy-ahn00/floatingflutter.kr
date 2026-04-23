@@ -8,45 +8,36 @@
 
 <body>
 
-<div class="noise"></div>
+<div class="bg"></div>
 
-<div class="container">
+<div class="scene">
 
-  <div class="scene">
+  <div class="envelope" id="env">
 
-    <div class="envelope" id="env">
+    <!-- PAPER (inside envelope) -->
+    <div class="paper" id="paper">
+      <h1 class="title">Welcome 2<br>The archive</h1>
 
-      <!-- BACK -->
-      <div class="env-body"></div>
+      <ul class="categories">
+        <li>books</li>
+        <li>movies</li>
+        <li>music</li>
+        <li>places</li>
+        <li>food & recipes</li>
+        <li>random lore</li>
+      </ul>
+    </div>
 
-      <!-- FLAPS -->
-      <div class="flap top"></div>
-      <div class="flap left"></div>
-      <div class="flap right"></div>
+    <!-- ENVELOPE BODY -->
+    <div class="env-body"></div>
 
-      <!-- PAPER -->
-      <div class="paper">
-        <h1 class="title">
-          Welcome 2<br>
-          The archive
-        </h1>
+    <!-- FLAP -->
+    <div class="flap"></div>
 
-        <ul class="categories">
-          <li>books</li>
-          <li>movies</li>
-          <li>music</li>
-          <li>places</li>
-          <li>food & recipes</li>
-          <li>random lore</li>
-        </ul>
-      </div>
-
-      <!-- BACK INFO -->
-      <div class="back-info">
-        <p>@floatingflutter.kr</p>
-        <p>your@email.com</p>
-      </div>
-
+    <!-- BACK SIDE -->
+    <div class="back">
+      <p>@floatingflutter.kr</p>
+      <p>your@email.com</p>
     </div>
 
   </div>
@@ -55,5 +46,4 @@
 
 <script src="script.js"></script>
 </body>
-</html></body>
 </html>
